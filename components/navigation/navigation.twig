@@ -1,0 +1,27 @@
+{% macro list(idAttr, items) %}
+<ul id="{{ idAttr }}">
+   {% for item in items %}
+		<li{% if item.active %} class="active"{% endif %}>
+		{% if item.url %}
+			<a href="{{ item.url }}">{{ item.title }}</a>
+		{% else %}
+			<span>{{ item.title }}</span>
+		{% endif %}
+		{% if item.subitems %}
+			{{ _self.list(null, item.subitems) }}
+		{% endif %}
+		</li>
+	{% endfor %}
+</ul>
+{% endmacro %}
+
+<nav class="quu-navigation {{ extraClasses }}" data-maxwidth="{{ maxWidth }}">
+	<button type="button" class="quu-nav-open" aria-label="{{ openButtonLabel }}" aria-expanded="false" aria-controls="{{ idAttr }}">
+		<svg role="presentation" aria-hidden="true"><use xlink:href="#hamburger"></use></svg>
+	</button>
+	<button type="button" class="quu-nav-close" aria-label="{{ closeButtonLabel }}" aria-hidden="true">
+		<svg role="presentation" aria-hidden="true"><use xlink:href="#close"></use></svg>
+	</button>
+	{% import _self as tree %}
+	{{ tree.list(idAttr, items) }}
+</nav>

@@ -1,0 +1,49 @@
+status: wip
+title: Navigation
+notes: The  attribute is optional. The script itself has a default value of 360px.<br>This will force the navigation to horizontal if the maximum width is reached.
+context:
+  maxWidth: 350
+  idAttr: quu-nav
+  openButtonLabel: Open menu
+  closeButtonLabel: Close menu
+  collapsible: true
+  items:
+    - title: Level title
+      subitems:
+        - title: Level 2.1
+          url: /url2.1/
+        - title: Level 2.2
+          url: /url2.2/
+        - title: Level 2.3 title
+          subitems:
+            - title: Level 3.1
+              url: /url3.1/
+            - title: Level 3.2
+              url: /url3.2/
+              subitems:
+                - title: Level 4.1
+                  url: /url4.1/
+                - title: Level 4.2
+                  url: /url4.2/
+    - title: Level 1.1
+      url: /url1.1/
+      active: true
+    - title: Level 1.2
+      url: /url1.2/
+variants:
+  - name: Vertical (hamburger)
+    context:
+      extraClasses: hamburger
+  - name: Horizontal
+    context:
+      extraClasses: horizontal
+  - name: horizontal-single-storey
+    label: Horizontal (single storey)
+    context:
+      extraClasses: horizontal single-storey
+  - name: Horizontal (hamburger)
+    context:
+      extraClasses: horizontal hamburger
+  - name: Horizontal Single Storey (Hamburger)
+    context:
+      extraClasses: horizontal single-storey hamburger
